@@ -1,14 +1,12 @@
 {% if latest_question_list %}
 	<ul>
 	{% for question in latest_question_list %}
-	
 		<!-- This is a hardcoded URL which is tightly coupled and should be avoided  -->
 		<li><a href="/polls/{{ question.id }}/">{{question.question_text }}</a></li>
-		
-		<!-- This uses the {% URL %} tag, using the 'app_name'(polls) and 'name'(detail) properties
-		in the urls.py file. This is a much better approach as it makes it much easier to change a URL
-		later on. Eg. you only need to change the URL in the urls.py file, without the need to change
-		it in all of the templates etc..  -->
+		<!-- This uses the URL tag, using the 'app_name'(polls) and 'name'(detail) properties in
+		the urls.py file. This is a much better approach as it makes it much easier to change a URL 
+ 		later on. Eg. you only need to change the URL in the urls.py file, without the need to change
+ 		it in all of the templates etc..  -->
 		<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 		
 	{% endfor %}
